@@ -1,73 +1,306 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cloud7Paradox | Network Automation Engineer</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Network Automation Engineer Portfolio</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2d3436;
+            --secondary: #0984e3;
+            --text: #2d3436;
+            --bg: #f5f6fa;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        /* Header Styles */
+        header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-bottom: 2rem;
+            border: 3px solid white;
+            background: #ddd;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--secondary);
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2rem;
+            color: var(--primary);
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .skill-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-card i {
+            font-size: 3rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        /* Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        /* Contact */
+        .contact-container {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            color: var(--primary);
+            font-size: 2rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--secondary);
+        }
+
+        /* Animations */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease-out;
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .skills-grid, .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-
-  <!-- Navigation Bar -->
-  <header>
     <nav>
-      <h1>Cloud7Paradox</h1>
-      <ul>
-        <li><a href="#about">About Me</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
     </nav>
-  </header>
 
-  <!-- About Section -->
-  <section id="about">
-    <h2>About Me</h2>
-    <p>Hello! I’m Krishna, a Network Automation Engineer specializing in Python, Ansible, and cloud technologies like AWS and Terraform. With over 6 years in the industry, I have a passion for optimizing network systems and making infrastructures robust and efficient.</p>
-  </section>
+    <header id="home" class="animate__animated animate__fadeIn">
+        <img src="/api/placeholder/150/150" alt="Profile Picture" class="profile-img">
+        <h1 class="animate__animated animate__slideInUp">Network Automation Engineer</h1>
+        <p class="animate__animated animate__slideInUp animate__delay-1s">
+            Specializing in Network Security, Cloud Infrastructure, and DevOps
+        </p>
+    </header>
 
-  <!-- Skills Section -->
-  <section id="skills">
-    <h2>Skills</h2>
-    <div class="skills-list">
-      <div class="skill">Network Automation</div>
-      <div class="skill">Python</div>
-      <div class="skill">Ansible</div>
-      <div class="skill">AWS & Cloud Deployment</div>
-      <div class="skill">Terraform</div>
-      <div class="skill">Firewall Configuration (Palo Alto, Cisco ASA, Fortigate)</div>
-    </div>
-  </section>
+    <section id="skills">
+        <h2 class="section-title animate-on-scroll">Skills & Expertise</h2>
+        <div class="skills-grid">
+            <div class="skill-card animate-on-scroll">
+                <i class="fas fa-network-wired"></i>
+                <h3>Network Automation</h3>
+                <p>Python | Ansible | Network Protocols</p>
+            </div>
+            <div class="skill-card animate-on-scroll">
+                <i class="fas fa-shield-alt"></i>
+                <h3>Network Security</h3>
+                <p>Firewall | IDS/IPS | Security Policies</p>
+            </div>
+            <div class="skill-card animate-on-scroll">
+                <i class="fas fa-cloud"></i>
+                <h3>Cloud Computing</h3>
+                <p>AWS | Azure | Terraform</p>
+            </div>
+            <div class="skill-card animate-on-scroll">
+                <i class="fas fa-code-branch"></i>
+                <h3>DevOps</h3>
+                <p>CI/CD | Docker | Kubernetes</p>
+            </div>
+        </div>
+    </section>
 
-  <!-- Projects Section -->
-  <section id="projects">
-    <h2>Projects</h2>
-    <div class="project">
-      <h3>Project Title 1</h3>
-      <p>Brief description of the project, challenges faced, and technologies used.</p>
-    </div>
-    <div class="project">
-      <h3>Project Title 2</h3>
-      <p>Brief description of the project, challenges faced, and technologies used.</p>
-    </div>
-    <!-- Add more projects as needed -->
-  </section>
+    <section id="projects">
+        <h2 class="section-title animate-on-scroll">Recent Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card animate-on-scroll">
+                <img src="/api/placeholder/400/200" alt="Network Automation Project">
+                <div class="project-content">
+                    <h3>Network Automation Framework</h3>
+                    <p>Automated network configuration and deployment using Python and Ansible</p>
+                </div>
+            </div>
+            <div class="project-card animate-on-scroll">
+                <img src="/api/placeholder/400/200" alt="Cloud Infrastructure Project">
+                <div class="project-content">
+                    <h3>Cloud Infrastructure as Code</h3>
+                    <p>Infrastructure automation using Terraform on AWS and Azure</p>
+                </div>
+            </div>
+            <div class="project-card animate-on-scroll">
+                <img src="/api/placeholder/400/200" alt="DevOps Project">
+                <div class="project-content">
+                    <h3>DevOps Pipeline</h3>
+                    <p>Continuous Integration and Deployment pipeline for network applications</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <!-- Contact Section -->
-  <section id="contact">
-    <h2>Contact Me</h2>
-    <p>If you’re interested in working with me or just want to connect, reach out!</p>
-    <ul>
-      <li>Email: <a href="mailto:your.email@example.com">your.email@example.com</a></li>
-      <li>LinkedIn: <a href="https://www.linkedin.com/in/your-profile">LinkedIn Profile</a></li>
-      <li>GitHub: <a href="https://github.com/Cloud7Paradox">GitHub Profile</a></li>
-    </ul>
-  </section>
+    <section id="contact">
+        <h2 class="section-title animate-on-scroll">Get in Touch</h2>
+        <div class="contact-container animate-on-scroll">
+            <p>Interested in collaboration? Let's connect!</p>
+            <div class="social-links">
+                <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="#" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="#" title="Email"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+    </section>
 
-  <footer>
-    <p>&copy; 2024 Cloud7Paradox</p>
-  </footer>
+    <script>
+        // Intersection Observer for scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
 
+        document.querySelectorAll('.animate-on-scroll').forEach((element) => {
+            observer.observe(element);
+        });
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const section = document.querySelector(this.getAttribute('href'));
+                section.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </body>
 </html>
