@@ -27,7 +27,6 @@
             line-height: 1.6;
         }
 
-        /* Header Styles */
         header {
             height: 100vh;
             display: flex;
@@ -49,7 +48,6 @@
             background: #ddd;
         }
 
-        /* Navigation */
         nav {
             position: fixed;
             top: 0;
@@ -78,7 +76,6 @@
             color: var(--secondary);
         }
 
-        /* Sections */
         section {
             padding: 5rem 2rem;
         }
@@ -90,7 +87,6 @@
             color: var(--primary);
         }
 
-        /* Skills */
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -118,7 +114,6 @@
             margin-bottom: 1rem;
         }
 
-        /* Projects */
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -132,6 +127,11 @@
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
         }
 
         .project-card img {
@@ -144,7 +144,18 @@
             padding: 1.5rem;
         }
 
-        /* Contact */
+        .project-icon {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        .project-tech {
+            margin-top: 1rem;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
         .contact-container {
             max-width: 600px;
             margin: 0 auto;
@@ -168,7 +179,6 @@
             color: var(--secondary);
         }
 
-        /* Animations */
         .animate-on-scroll {
             opacity: 0;
             transform: translateY(20px);
@@ -237,27 +247,75 @@
     </section>
 
     <section id="projects">
-        <h2 class="section-title animate-on-scroll">Recent Projects</h2>
+        <h2 class="section-title animate-on-scroll">Featured Projects</h2>
         <div class="projects-grid">
             <div class="project-card animate-on-scroll">
-                <img src="/api/placeholder/400/200" alt="Network Automation Project">
+                <img src="/api/placeholder/400/200" alt="Network Automation">
                 <div class="project-content">
-                    <h3>Network Automation Framework</h3>
-                    <p>Automated network configuration and deployment using Python and Ansible</p>
+                    <i class="fas fa-cogs project-icon"></i>
+                    <h3>Automated Network Configuration</h3>
+                    <p>Comprehensive network automation solution for configuration management and deployment</p>
+                    <div class="project-tech">Python • Ansible • YAML • Git</div>
                 </div>
             </div>
+
             <div class="project-card animate-on-scroll">
-                <img src="/api/placeholder/400/200" alt="Cloud Infrastructure Project">
+                <img src="/api/placeholder/400/200" alt="CI/CD Pipeline">
                 <div class="project-content">
-                    <h3>Cloud Infrastructure as Code</h3>
-                    <p>Infrastructure automation using Terraform on AWS and Azure</p>
+                    <i class="fas fa-infinity project-icon"></i>
+                    <h3>CI/CD Pipeline for Infrastructure</h3>
+                    <p>Automated infrastructure deployment pipeline with continuous integration and delivery</p>
+                    <div class="project-tech">Jenkins • Docker • GitLab CI • Kubernetes</div>
                 </div>
             </div>
+
             <div class="project-card animate-on-scroll">
-                <img src="/api/placeholder/400/200" alt="DevOps Project">
+                <img src="/api/placeholder/400/200" alt="IaC with Terraform">
                 <div class="project-content">
-                    <h3>DevOps Pipeline</h3>
-                    <p>Continuous Integration and Deployment pipeline for network applications</p>
+                    <i class="fas fa-code project-icon"></i>
+                    <h3>Infrastructure as Code</h3>
+                    <p>AWS infrastructure automation using Terraform with modular design patterns</p>
+                    <div class="project-tech">Terraform • AWS • HCL • CloudFormation</div>
+                </div>
+            </div>
+
+            <div class="project-card animate-on-scroll">
+                <img src="/api/placeholder/400/200" alt="VPN Solution">
+                <div class="project-content">
+                    <i class="fas fa-lock project-icon"></i>
+                    <h3>Custom VPN Solution</h3>
+                    <p>Secure network access solution with custom VPN implementation and monitoring</p>
+                    <div class="project-tech">OpenVPN • PKI • Network Security • Linux</div>
+                </div>
+            </div>
+
+            <div class="project-card animate-on-scroll">
+                <img src="/api/placeholder/400/200" alt="Monitoring System">
+                <div class="project-content">
+                    <i class="fas fa-chart-line project-icon"></i>
+                    <h3>Network Monitoring System</h3>
+                    <p>Comprehensive monitoring and alerting system using Prometheus and Grafana</p>
+                    <div class="project-tech">Prometheus • Grafana • AlertManager • PromQL</div>
+                </div>
+            </div>
+
+            <div class="project-card animate-on-scroll">
+                <img src="/api/placeholder/400/200" alt="Serverless Application">
+                <div class="project-content">
+                    <i class="fas fa-cloud-upload-alt project-icon"></i>
+                    <h3>Serverless Application</h3>
+                    <p>Cloud-native application using AWS Lambda and API Gateway</p>
+                    <div class="project-tech">AWS Lambda • API Gateway • DynamoDB • CloudWatch</div>
+                </div>
+            </div>
+
+            <div class="project-card animate-on-scroll">
+                <img src="/api/placeholder/400/200" alt="Configuration Management">
+                <div class="project-content">
+                    <i class="fas fa-database project-icon"></i>
+                    <h3>Centralized Configuration Management</h3>
+                    <p>Centralized system for managing network configurations across multiple environments</p>
+                    <div class="project-tech">Ansible • Git • YAML • Python</div>
                 </div>
             </div>
         </div>
@@ -276,7 +334,6 @@
     </section>
 
     <script>
-        // Intersection Observer for scroll animations
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -291,7 +348,6 @@
             observer.observe(element);
         });
 
-        // Smooth scrolling for navigation
         document.querySelectorAll('nav a').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
