@@ -8,23 +8,37 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
     <style>
         :root {
-            --primary: #2d3436;
-            --secondary: #0984e3;
-            --text: #2d3436;
-            --bg: #f5f6fa;
+            --matrix-green: #00ff41;
+            --matrix-dark-green: #003b00;
+            --matrix-black: #0a0a0a;
+            --matrix-gray: #1a1a1a;
+            --matrix-light: #4fff41;
+            --glow: 0 0 10px var(--matrix-green);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Courier New', monospace;
         }
 
         body {
-            background: var(--bg);
-            color: var(--text);
+            background: var(--matrix-black);
+            color: var(--matrix-green);
             line-height: 1.6;
+        }
+
+        /* Matrix Rain Effect */
+        .matrix-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.15;
+            z-index: -1;
         }
 
         header {
@@ -35,8 +49,9 @@
             align-items: center;
             text-align: center;
             padding: 2rem;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            color: white;
+            background: linear-gradient(135deg, rgba(0,59,0,0.9) 0%, rgba(10,10,10,0.95) 100%);
+            position: relative;
+            overflow: hidden;
         }
 
         .profile-img {
@@ -44,18 +59,20 @@
             height: 150px;
             border-radius: 50%;
             margin-bottom: 2rem;
-            border: 3px solid white;
-            background: #ddd;
+            border: 3px solid var(--matrix-green);
+            box-shadow: var(--glow);
+            background: var(--matrix-gray);
         }
 
         nav {
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(10,10,10,0.95);
             padding: 1rem;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 5px rgba(0,255,65,0.2);
             z-index: 1000;
+            border-bottom: 1px solid var(--matrix-green);
         }
 
         nav ul {
@@ -67,13 +84,15 @@
 
         nav a {
             text-decoration: none;
-            color: var(--text);
+            color: var(--matrix-green);
             font-weight: 500;
-            transition: color 0.3s;
+            transition: all 0.3s;
+            text-shadow: var(--glow);
         }
 
         nav a:hover {
-            color: var(--secondary);
+            color: var(--matrix-light);
+            text-shadow: 0 0 15px var(--matrix-light);
         }
 
         section {
@@ -84,7 +103,8 @@
             text-align: center;
             margin-bottom: 3rem;
             font-size: 2rem;
-            color: var(--primary);
+            color: var(--matrix-green);
+            text-shadow: var(--glow);
         }
 
         .skills-grid {
@@ -96,22 +116,26 @@
         }
 
         .skill-card {
-            background: white;
+            background: var(--matrix-gray);
             padding: 2rem;
             border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 0 15px rgba(0,255,65,0.1);
             text-align: center;
-            transition: transform 0.3s;
+            transition: all 0.3s;
+            border: 1px solid var(--matrix-dark-green);
         }
 
         .skill-card:hover {
             transform: translateY(-5px);
+            border-color: var(--matrix-green);
+            box-shadow: var(--glow);
         }
 
         .skill-card i {
             font-size: 3rem;
-            color: var(--secondary);
+            color: var(--matrix-green);
             margin-bottom: 1rem;
+            text-shadow: var(--glow);
         }
 
         .projects-grid {
@@ -123,21 +147,25 @@
         }
 
         .project-card {
-            background: white;
+            background: var(--matrix-gray);
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
+            box-shadow: 0 0 15px rgba(0,255,65,0.1);
+            transition: all 0.3s;
+            border: 1px solid var(--matrix-dark-green);
         }
 
         .project-card:hover {
             transform: translateY(-10px);
+            border-color: var(--matrix-green);
+            box-shadow: var(--glow);
         }
 
         .project-card img {
             width: 100%;
             height: 200px;
             object-fit: cover;
+            border-bottom: 1px solid var(--matrix-dark-green);
         }
 
         .project-content {
@@ -146,14 +174,16 @@
 
         .project-icon {
             font-size: 2.5rem;
-            color: var(--secondary);
+            color: var(--matrix-green);
             margin-bottom: 1rem;
+            text-shadow: var(--glow);
         }
 
         .project-tech {
             margin-top: 1rem;
-            color: #666;
+            color: var(--matrix-light);
             font-size: 0.9rem;
+            opacity: 0.8;
         }
 
         .contact-container {
@@ -170,13 +200,16 @@
         }
 
         .social-links a {
-            color: var(--primary);
+            color: var(--matrix-green);
             font-size: 2rem;
-            transition: color 0.3s;
+            transition: all 0.3s;
+            text-shadow: var(--glow);
         }
 
         .social-links a:hover {
-            color: var(--secondary);
+            color: var(--matrix-light);
+            text-shadow: 0 0 15px var(--matrix-light);
+            transform: scale(1.1);
         }
 
         .animate-on-scroll {
@@ -188,6 +221,28 @@
         .animate-on-scroll.visible {
             opacity: 1;
             transform: translateY(0);
+        }
+
+        /* Matrix text effect */
+        .matrix-text {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .matrix-text::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, transparent, var(--matrix-black));
+            animation: matrix-scan 2s linear infinite;
+        }
+
+        @keyframes matrix-scan {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100%); }
         }
 
         @media (max-width: 768px) {
@@ -203,6 +258,7 @@
     </style>
 </head>
 <body>
+    <canvas id="matrix-rain" class="matrix-bg"></canvas>
     <nav>
         <ul>
             <li><a href="#home">Home</a></li>
@@ -214,8 +270,8 @@
 
     <header id="home" class="animate__animated animate__fadeIn">
         <img src="/api/placeholder/150/150" alt="Profile Picture" class="profile-img">
-        <h1 class="animate__animated animate__slideInUp">Network Automation Engineer</h1>
-        <p class="animate__animated animate__slideInUp animate__delay-1s">
+        <h1 class="animate__animated animate__slideInUp matrix-text">Network Automation Engineer</h1>
+        <p class="animate__animated animate__slideInUp animate__delay-1s matrix-text">
             Specializing in Network Security, Cloud Infrastructure, and DevOps
         </p>
     </header>
@@ -226,22 +282,22 @@
             <div class="skill-card animate-on-scroll">
                 <i class="fas fa-network-wired"></i>
                 <h3>Network Automation</h3>
-                <p>Python | Ansible | Network Protocols</p>
+                <p>Python • Ansible • Network Protocols</p>
             </div>
             <div class="skill-card animate-on-scroll">
                 <i class="fas fa-shield-alt"></i>
                 <h3>Network Security</h3>
-                <p>Firewall | IDS/IPS | Security Policies</p>
+                <p>Firewall • IDS/IPS • Security Policies</p>
             </div>
             <div class="skill-card animate-on-scroll">
                 <i class="fas fa-cloud"></i>
                 <h3>Cloud Computing</h3>
-                <p>AWS | Azure | Terraform</p>
+                <p>AWS • Azure • Terraform</p>
             </div>
             <div class="skill-card animate-on-scroll">
                 <i class="fas fa-code-branch"></i>
                 <h3>DevOps</h3>
-                <p>CI/CD | Docker | Kubernetes</p>
+                <p>CI/CD • Docker • Kubernetes</p>
             </div>
         </div>
     </section>
@@ -334,29 +390,27 @@
     </section>
 
     <script>
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, {
-            threshold: 0.1
-        });
+        // Matrix rain effect
+        const canvas = document.getElementById('matrix-rain');
+        const ctx = canvas.getContext('2d');
 
-        document.querySelectorAll('.animate-on-scroll').forEach((element) => {
-            observer.observe(element);
-        });
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
 
-        document.querySelectorAll('nav a').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const section = document.querySelector(this.getAttribute('href'));
-                section.scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-    </script>
-</body>
-</html>
+        const matrix = "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&^%";
+        const drops = [];
+
+        const fontSize = 14;
+        const columns = canvas.width/fontSize;
+
+        for(let x = 0; x < columns; x++)
+            drops[x] = 1; 
+
+        function draw() {
+            ctx.fillStyle = 'rgba(0, 0, 0, .04)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            ctx.fillStyle = '#00ff41';
+            ctx.font = fontSize + 'px monospace';
+
+            for(let i = 0; i < drops.length; i++) {
